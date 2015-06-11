@@ -1,5 +1,25 @@
-(ns sets
+(ns data-structures
   (require [clojure.set :refer :all]))
+
+
+
+;;;;;;;;;
+;; Vectors
+
+
+
+
+
+
+
+;;;;;;;;;
+;; Maps
+
+
+
+
+;;;;;;;;;;
+;; Sets
 
 (defrecord Supplier [number name status city])
 (defrecord Part [number name colour weight city])
