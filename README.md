@@ -1,16 +1,25 @@
 Thinking Clojure
 ================
 
-A Learning Series for Clojure Programming.
+A REPL-based learning series for Clojure Programming. Includes
+features from the upcoming 1.7 release.
 
-## Usage
+## Getting Started
+
+Install Leiningen
+
+	brew install leiningen
+
+Start a REPL
 
 	rlwrap lein trampline repl
 
-Or open your favorite IDE and start an nRepl.
+OR, open your favorite IDE (Vim, Emacs, IntelliJ, Sublime) and start an nRepl.
+
+## Credits
+
+- [ClojureDocs](http://clojuredocs.org)
 
 ## License
-
-Copyright © 2015 Priyatam Mudivarti.
 
 MIT License.

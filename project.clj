@@ -15,8 +15,13 @@
                  [org.clojure/java.jdbc "0.3.7"]
                  [org.clojure/core.logic "0.8.10"]
                  [org.clojure/data.xml "0.0.8"]
+                 [clj-time "0.9.0"]
                  [cheshire "5.5.0"]
                  [clj-http "1.1.2"]
                  [hiccup "1.0.5"]
                  [enlive "1.1.5"]
-                 [tentacles "0.3.0"]])
+                 [tentacles "0.3.0"]]
+
+  :plugins [[lein-cljfmt "0.1.10"]
+            [lein-marginalia "0.8.0"]
+            [jonase/eastwood "0.2.1"]])
