@@ -1,5 +1,17 @@
 (ns macros)
 
+(defmacro delay
+  [& body]
+  (list 'new 'clojure.lang.Delay (list* `^{:once true} fn* [] body)))
+
+(def tomorrow
+  (delay (prn "Exec Tomorrow") (+ 1 2)))
+
+(def fu
+  (future (prn "hi") (+ 1 2)))
+
+(dotimes [i 6] (future (prn i)))
+
 ;; FIXME
 (defmacro ignore [body & handler]
   "Ingores a body that throws an exception by returning nil.
@@ -28,18 +40,3 @@
 
 (let [ex '(+ 1 2 3)]
   (cons '* (rest ex)))
-
-(read-string "#(+ 1 2)")
-
-(eval (read-string "'(1 2 3)"))
-
-(eval #(+ 1 2))
-
-(eval #(+ 1 2))
-
-(read-string "(if true 1 2)")
-
-(defn ignore-last [fn-call]
-  (butlast fn-call))
-
-#_(ignore-last (+ 1 2 3))
