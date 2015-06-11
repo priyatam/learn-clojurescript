@@ -24,12 +24,7 @@
 (def hundred-times
   (partial * 100))
 
-(defn total2 [price & qty]
+(defn total-price [price & qty]
   (apply * price qty))
 
-(total2 10 2 3)
-
-(def books {})
-
-(some
- (fn [b] :books > 5) books)
+(total-price 10 2 3)
