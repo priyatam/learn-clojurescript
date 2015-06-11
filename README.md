@@ -1,14 +1,16 @@
-# thinking-clojure
+Thinking Clojure
+================
 
-A Clojure library designed to ... well, that part is up to you.
+A Learning Series for Clojure Programming.
 
 ## Usage
 
-FIXME
+	rlwrap lein trampline repl
+
+Or open your favorite IDE and start an nRepl.
 
 ## License
 
-Copyright © 2015 FIXME
+Copyright © 2015 Priyatam Mudivarti.
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+MIT License.
