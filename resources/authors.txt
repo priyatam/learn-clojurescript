@@ -1,0 +1,1 @@
+/type/author	/authors/OL999930A	2	2008-08-20T17:56:50.993393	{"name": "Onur Akdog\u0306u", "personal_name": "Onur Akdog\u0306u", "last_modified": {"type": "/type/datetime", "value": "2008-08-20T17:56:50.993393"}, "key": "/authors/OL999930A", "type": {"key": "/type/author"}, "revision": 2}
