@@ -1,4 +1,4 @@
-(ns seq)
+(ns seqs)
 
 (def data {:headers {"Content-Type" "text/html"} :body "Hello World" })
 
