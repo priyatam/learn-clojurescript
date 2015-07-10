@@ -30,11 +30,14 @@
 
 ;; Pull "columns" out of a collection of collections.
 (map vector [:a :b :c] {:one 1 :two 2 :three 3} [:g :h :i])
+
 (apply map vector [[:a :b :c]
                    {:one 1 :two 2 :three 3}
                    [:g :h :i]])
 
-(map #(vector (first %) (* 2 (second %)))
+(map #(vector (first %) (let [crzy (fn [e]
+                                     (* e 10))]
+                          (* (crzy 10) (second %))))
      {:a 1 :b 2 :c 3})
 
 ;; applies fn (list) to first element of each collection as (fn 1 a 10)
@@ -77,7 +80,10 @@
 
 ;; Use a hash-map as a function to translate values in a collection from the
 ;; given key to the associated value; then use (filter identity... to remove the nils
-(filter not-empty (map {2 "two" 3 "three"} [1 2 3 4 5]))
+(map 
+ (filter even?
+         (map
+          {2 "two" 3 "three"} [1 2 3 4 5])))
 
 
 ;;;;;;;;;;
@@ -99,3 +105,36 @@
   (reduce #(assoc %1 %2 (inc (%1 %2 0)))
           {}
           (re-seq #"\w+" s)))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Ring Middlewares as HoF
+
+;; request
+(def request
+  {:server-port "8080"
+   :content-type :text
+   :remote-addr "http://localhost:8080"})
+
+;; handler
+(defn my-ip [request]
+  {:status 200
+   :headers {"Content-Type" "text/plain"}
+   :body (:remote-addr request)})
+
+;; middleware
+(defn wrap-content-type [handler content-type]
+  (fn [request]
+    (let [response (handler request)]
+      (assoc-in response [:headers "Content-Type"] content-type))))
+
+(defn json-response [data & [status]]
+  {:status (or status 200)
+   :headers {"Content-Type" "application/edn"}
+   :body (pr-str data)})
+
+(def app
+  (wrap-content-type my-ip "text/html"))
+
+(defn serve [request]
+  (app request))
