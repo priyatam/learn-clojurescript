@@ -2,7 +2,7 @@
 
 (def data
   {:headers {"Content-Type" "text/html"}
-   :body {:text "Hello World"
+   :body {:text {:html "markup"}
           :images "/img/path-to-img.jpg"}})
 
 (assoc-in data [:body :text] "Hello Planet" )
@@ -12,7 +12,7 @@
 ;; Like map, except f is applied in parallel.
 
 (defn long-running-job [n]
-  (Thread/sleep 1000) ; wait for 3 seconds
+  (Thread/sleep 1000)
   (+ n 10))
 
 (time (doall (map long-running-job (range 4))))
@@ -41,7 +41,11 @@
 ;; how about writing a generic function?
 ;; ((comp rest reverse) [1 2 3 4])
 
-(def compai (comp rest reverse))
+(defn square [x]
+  (* x x))
+
+(def compai (comp square first rest reverse))
+
 (compai [1 2 3 4 5])
 
 (map
