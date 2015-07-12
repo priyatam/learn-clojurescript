@@ -23,6 +23,7 @@
                  [tentacles "0.3.0"]
                  [me.raynes/conch "0.8.0"]]
 
+  :profiles {:dev {:dependencies [[org.clojure/tools.nrepl "0.2.10"]]}}
   :plugins [[lein-cljfmt "0.1.10"]
             [lein-marginalia "0.8.0"]
             [jonase/eastwood "0.2.1"]])
