@@ -138,3 +138,10 @@
 
 (defn serve [request]
   (app request))
+
+
+;;;;;;;;;;;;;;;;;;
+;; mapcat
+
+(mapcat reverse [[3 2 1 0] [6 5 4] [9 8 7]])
+
