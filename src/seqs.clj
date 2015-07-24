@@ -1,5 +1,4 @@
-(ns seqs
-  (:require [clojure.zip :as zip]))
+(ns seqs)
 
 (def data
   {:headers {"Content-Type" "text/html"}
@@ -12,57 +11,6 @@
 (def matrix [[1 2 3 4 5]
              ["a" "b" "c" "d" "e"]
              ["hello" "thanks" "hola" "namaste" "hi"]])
-
-;;;;;;;;;
-;; Zip
-
-;; example from clojure source: zip.clj
-
-(def zip1 [1 '(a b c) 2])
-
-(def root-loc (zip/seq-zip (seq zip1)))
-
-(def data '[[a * b] + [c * d]])
-(def dz (vector-zip data))
-
-(right (down (right (right (down dz)))))
-(lefts (right (down (right (right (down dz))))))
-(rights (right (down (right (right (down dz))))))
-(up (up (right (down (right (right (down dz)))))))
-(path (right (down (right (right (down dz))))))
-
-(-> dz down right right down right)
-(-> dz down right right down right (replace '/) root)
-(-> dz next next (edit str) next next next (replace '/) root)
-(-> dz next next next next next next next next next remove root)
-(-> dz next next next next next next next next next remove (insert-right 'e) root)
-(-> dz next next next next next next next next next remove up (append-child 'e) root)
-
-(end? (-> dz next next next next next next next next next remove next))
-
-(-> dz next remove next remove root)
-
-(loop [loc dz]
-  (if (end? loc)
-    (root loc)
-    (recur (next (if (= '* (node loc))
-                   (replace loc '/)
-                   loc)))))
-
-(loop [loc dz]
-  (if (end? loc)
-    (root loc)
-    (recur (next (if (= '* (node loc))
-                   (remove loc)
-                   loc)))))
-
-(defn print-tree [original]
-  (loop [loc (zip/seq-zip (seq original))]
-    (if (zip/end? loc)
-      (zip/root loc)
-      (recur (zip/next
-                (do (println (zip/node loc))
-                    loc))))))
 
 ;;;;;;;;;
 ;; pmap
