@@ -7,22 +7,9 @@
 
 (assoc-in data [:body :text] "Hello Planet" )
 
-
 (def matrix [[1 2 3 4 5]
              ["a" "b" "c" "d" "e"]
              ["hello" "thanks" "hola" "namaste" "hi"]])
-
-;;;;;;;;;
-;; pmap
-;; Like map, except f is applied in parallel.
-
-(defn long-running-job [n]
-  (Thread/sleep 1000)
-  (+ n 10))
-
-(time (doall (map long-running-job (range 4))))
-
-(time (doall (pmap long-running-job (range 4))))
 
 ;;;;;;;;;;;
 ;; reverse
@@ -33,7 +20,6 @@
 ;; remove (opp of filter)
 
 (remove #(if (odd? %) %) (range 10))
-
 
 ;;;;;;;;;;;
 ;; comp
@@ -83,3 +69,47 @@
 
 (def red-comp (comp rest reverse))
 (red-comp [1 2 3 4 5])
+
+
+;;;;;;;;;;;;;;;;;;;;
+;; Playing with Maps
+
+(defn map-over-map
+  "Given a function like (fn [k v] ...) returns a new map with each entry mapped
+   by it."
+  [f m]
+  (when m
+    (persistent! (reduce-kv (fn [out-m k v]
+                              (apply assoc! out-m (f k v)))
+                            (transient (empty m))
+                            m))))
+
+(defn map-values
+  "Apply a function on all values of a map and return the corresponding map (all
+   keys untouched)"
+  [f m]
+  (when m
+    (persistent! (reduce-kv (fn [out-m k v]
+                              (assoc! out-m k (f v)))
+                            (transient (empty m))
+                            m))))
+
+(defn map-keys
+  "Apply a function on all keys of a map and return the corresponding map (all
+   values untouched)"
+  [f m]
+  (when m
+    (persistent! (reduce-kv (fn [out-m k v]
+                              (assoc! out-m (f k) v))
+                            (transient (empty m))
+                            m))))
+
+(defn map-values
+  "Apply a function on all values of a map and return the corresponding map (all
+   keys untouched)"
+  [f m]
+  (when m
+    (persistent! (reduce-kv (fn [out-m k v]
+                              (assoc! out-m k (f v)))
+                            (transient (empty m))
+                            m))))
