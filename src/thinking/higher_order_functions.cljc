@@ -1,5 +1,4 @@
-(ns thinking.higher-order-functions
-  (require [clojure.pprint :refer [pprint]]))
+(ns thinking.higher-order-functions)
 
 ;;;;;;;;;;;;;;;
 ;; basic

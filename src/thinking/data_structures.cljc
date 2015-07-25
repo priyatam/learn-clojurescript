@@ -1,5 +1,6 @@
 (ns thinking.data-structures
-  (require [clojure.set :as set]))
+  (:require
+   [clojure.set :as set]))
 
 ;;;;;;;;;
 ;; Vectors

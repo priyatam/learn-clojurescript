@@ -1,5 +1,6 @@
 (ns thinking.zips
-  (:use [clojure.zip]))
+  (:require
+   [clojure.zip :as z]))
 
 ;; example from clojure source: zip.cljn
 
@@ -8,43 +9,43 @@
 (def root-loc (seq-zip (seq zip1)))
 
 (def data '[[a * b] + [c * d]])
-(def dz (vector-zip data))
+(def dz (z/vector-zip data))
 
-(right (down (right (right (down dz)))))
-(lefts (right (down (right (right (down dz))))))
-(rights (right (down (right (right (down dz))))))
-(up (up (right (down (right (right (down dz)))))))
-(path (right (down (right (right (down dz))))))
+(z/right (z/own (z/right (z/right (z/down dz)))))
+(z/lefts (z/right (z/down (z/right (z/right (z/down dz))))))
+(z/rights (z/right (z/down (z/right (z/right (z/down dz))))))
+(z/up (z/up (z/right (z/down (z/right (z/right (z/down dz)))))))
+(z/path (z/right (z/down (z/right (z/right (z/down dz))))))
 
-(-> dz down right right down right)
-(-> dz down right right down right (replace '/) root)
-(-> dz next next (edit str) next next next (replace '/) root)
-(-> dz next next next next next next next next next remove root)
-(-> dz next next next next next next next next next remove (insert-right 'e) root)
-(-> dz next next next next next next next next next remove up (append-child 'e) root)
+(-> dz z/down z/right z/right z/down z/right (z/replace '/) z/root)
+(-> dz z/next z/next (z/edit str) z/next z/next z/next (z/replace '/) z/root)
+(-> dz z/next z/next z/next z/next z/next z/next z/next z/next z/next z/remove
+    (z/insert-right 'e) z/root)
+(-> dz z/next z/next z/next z/next z/next z/next z/next z/next z/next z/remove z/up
+    (z/append-child 'e) z/root)
 
-(end? (-> dz next next next next next next next next next remove next))
+(z/end? (-> dz z/next z/next z/next z/next z/next z/next z/next z/next z/next z/remove z/next))
 
-(-> dz next remove next remove root)
+(-> dz z/next z/remove z/next z/remove z/root)
 
 (loop [loc dz]
-  (if (end? loc)
-    (root loc)
-    (recur (next (if (= '* (node loc))
-                   (replace loc '/)
+  (if (z/end? loc)
+    (z/root loc)
+    (recur (z/next (if (= '* (z/node loc))
+                   (z/replace loc '/)
                    loc)))))
 
 (loop [loc dz]
-  (if (end? loc)
-    (root loc)
-    (recur (next (if (= '* (node loc))
-                   (remove loc)
+  (if (z/end? loc)
+    (z/root loc)
+    (recur (z/next (if (= '* (z/node loc))
+                   (z/remove loc)
                    loc)))))
 
 (defn print-tree [original]
-  (loop [loc (seq-zip (seq original))]
-    (if (end? loc)
-      (root loc)
-      (recur (next
-                (do (println (node loc))
+  (loop [loc (z/seq-zip (seq original))]
+    (if (z/end? loc)
+      (z/root loc)
+      (recur (z/next
+                (do (println (z/node loc))
                     loc))))))

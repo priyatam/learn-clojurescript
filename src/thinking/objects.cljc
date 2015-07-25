@@ -1,6 +1,4 @@
-(ns thinking.objects
-  (:require
-   [clojure.edn :as edn]))
+(ns thinking.objects)
 
 ;; Cljc doesn't support traditional OOP programming; however at its
 ;; heart, OO foundations exist: Interfaces, Polymorphism, and light-weight 'records'
@@ -83,15 +81,16 @@
   (reduce conj {} (map #(-select % m) selectors-coll)))
 
 ;; A sample implementation can be based on the collection type
-(extend-protocol Selector
-  clojure.lang.Keyword
-  (-select [k m]
-    (find m k))
-  clojure.lang.APersistentMap
-  (-select [sm m]
-    (into {}
-          (for [[k s] sm]
-            [k (select (get m k) s)]))))
+#?(:clj
+   (extend-protocol Selector
+     clojure.lang.Keyword
+     (-select [k m]
+       (find m k))
+     clojure.lang.APersistentMap
+     (-select [sm m]
+       (into {}
+             (for [[k s] sm]
+               [k (select (get m k) s)])))))
 
 ;; Let's try now
 (select my-map

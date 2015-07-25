@@ -8,8 +8,12 @@
   :global-vars {*warn-on-reflection* false *assert* false}
   :dependencies [[org.clojure/clojure "1.7.0"]
                  [org.clojure/clojurescript "0.0-3367"]
-                 [org.clojure/core.async "0.1.346.0-17112a-alpha"]]
-
+                 [org.clojure/core.async "0.1.346.0-17112a-alpha"]
+                 [com.cognitect/transit-cljs "0.8.220"]]
   :profiles {:dev {:dependencies [[org.clojure/tools.nrepl "0.2.10"]
-                                  [priyatam/replify "0.2.2"]]}}
-  :plugins [[lein-marginalia "0.8.0"]])
+                                  [figwheel "0.3.3"]
+                                  [priyatam/replify "0.2.2"]]}
+             :figwheel {:nrepl-port 7888}}
+  :plugins [[cider/cider-nrepl "0.9.1"]
+            [lein-marginalia "0.8.0"]
+            [lein-figwheel "0.3.3"]])

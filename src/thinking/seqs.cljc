@@ -113,3 +113,8 @@
                               (assoc! out-m k (f v)))
                             (transient (empty m))
                             m))))
+
+(defn invert-map
+  "Inverts a map: key becomes value, value becomes key"
+  [m]
+  (zipmap (vals m) (keys m)))

@@ -1,5 +1,6 @@
 (ns thinking.recursion
-  (:require [clojure.string :as str]))
+  (:require
+   [clojure.string :as str]))
 
 ;; Loop binds initial values once, then binds values from each recursion call
 
