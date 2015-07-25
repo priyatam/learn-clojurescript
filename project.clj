@@ -10,5 +10,6 @@
                  [org.clojure/clojurescript "0.0-3367"]
                  [org.clojure/core.async "0.1.346.0-17112a-alpha"]]
 
-  :profiles {:dev {:dependencies [[org.clojure/tools.nrepl "0.2.10"]]}}
+  :profiles {:dev {:dependencies [[org.clojure/tools.nrepl "0.2.10"]
+                                  [priyatam/replify "0.2.2"]]}}
   :plugins [[lein-marginalia "0.8.0"]])
