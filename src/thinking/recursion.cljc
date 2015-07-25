@@ -6,9 +6,16 @@
 (def factorial
   (fn [n]
     (loop [cnt n acc 1]
-       (if (zero? cnt)
-            acc
-          (recur (dec cnt) (* acc cnt))))))
+      (if (zero? cnt)
+        acc
+        (recur (dec cnt) (* acc cnt))))))
+
+(defn prime?
+  [num]
+  (loop [start-num 2]
+    (if (> start-num (Math/sqrt num)) true
+        (if (= (rem num start-num) 0) false
+            (recur (inc start-num))))))
 
 (defn find-needle [needle haystack]
   (loop [needle needle
