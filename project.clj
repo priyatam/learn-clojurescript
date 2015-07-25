@@ -9,11 +9,9 @@
   :dependencies [[org.clojure/clojure "1.7.0"]
                  [org.clojure/clojurescript "0.0-3367"]
                  [org.clojure/core.async "0.1.346.0-17112a-alpha"]
-                 [com.cognitect/transit-cljs "0.8.220"]]
+                 [com.cognitect/transit-cljs "0.8.220"]
+                 [com.cognitect/transit-clj "0.8.275"]]
   :profiles {:dev {:dependencies [[org.clojure/tools.nrepl "0.2.10"]
-                                  [figwheel "0.3.3"]
-                                  [priyatam/replify "0.2.2"]]}
-             :figwheel {:nrepl-port 7888}}
+                                  [priyatam/replify "0.2.2"]]}}
   :plugins [[cider/cider-nrepl "0.9.1"]
-            [lein-marginalia "0.8.0"]
-            [lein-figwheel "0.3.3"]])
+            [lein-marginalia "0.8.0"]])
