@@ -1,8 +1,5 @@
-(ns zips
+(ns thinking.zips
   (:use [clojure.zip]))
-
-;;;;;;;;;
-;; Zip
 
 ;; example from clojure source: zip.cljn
 

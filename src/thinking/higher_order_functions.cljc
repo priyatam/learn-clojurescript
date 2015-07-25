@@ -1,4 +1,4 @@
-(ns higher-order-functions
+(ns thinking.higher-order-functions
   (require [clojure.pprint :refer [pprint]]))
 
 ;;;;;;;;;;;;;;;

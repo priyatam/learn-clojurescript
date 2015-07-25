@@ -1,4 +1,4 @@
-(ns macros)
+(ns thinkingg.macros)
 
 (defmacro delay
   [& body]

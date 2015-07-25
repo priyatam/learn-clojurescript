@@ -1,4 +1,4 @@
-(ns seqs)
+(ns thinking.seqs)
 
 (def data
   {:headers {"Content-Type" "text/html"}

@@ -1,5 +1,5 @@
-(ns data-structures
-  (require [clojure.set :refer :all]))
+(ns thinking.data-structures
+  (require [clojure.set :as set]))
 
 ;;;;;;;;;
 ;; Vectors
@@ -45,16 +45,16 @@
     (Shipment. "S2" "P2" 200)
     (Shipment. "S3" "P3" 400)})
 
-(rename parts {:number :id, :city :location})
-(select #(= (:name %) "Smith") suppliers)
+(set/rename parts {:number :id, :city :location})
+(set/select #(= (:name %) "Smith") suppliers)
 
-(project suppliers [:city])
+(set/project suppliers [:city])
 
-(join parts shipments {:number :part})
+(set/join parts shipments {:number :part})
 
-(project
- (join
-  (select #(= (:city %) "Paris") suppliers)
+(set/project
+ (set/join
+  (set/select #(= (:city %) "Paris") suppliers)
   shipments
   {:number :supplier})
  [:name])

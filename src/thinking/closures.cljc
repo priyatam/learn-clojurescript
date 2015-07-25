@@ -1,4 +1,4 @@
-(ns closures)
+(ns thinking.closures)
 
 (def foo
   (let [counter (atom 0)]

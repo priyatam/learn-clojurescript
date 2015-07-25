@@ -1,4 +1,4 @@
-(ns loops)
+(ns thinking.loops)
 
 ;;;;;;;;
 ;; Simple Loops

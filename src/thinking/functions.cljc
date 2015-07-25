@@ -1,4 +1,4 @@
-(ns functions)
+(ns thinking.functions)
 
 (defn foofn [str]
   (println "hello " str))
