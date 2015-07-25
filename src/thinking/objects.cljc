@@ -1,4 +1,4 @@
-(ns thinking.protocols
+(ns thinking.objects
   (:require
    [clojure.edn :as edn]))
 
