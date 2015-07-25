@@ -10,7 +10,8 @@
                  [org.clojure/clojurescript "0.0-3367"]
                  [org.clojure/core.async "0.1.346.0-17112a-alpha"]
                  [com.cognitect/transit-cljs "0.8.220"]
-                 [com.cognitect/transit-clj "0.8.275"]]
+                 [com.cognitect/transit-clj "0.8.275"]
+                 [garden "1.2.5"]]
   :profiles {:dev {:dependencies [[org.clojure/tools.nrepl "0.2.10"]
                                   [priyatam/replify "0.2.2"]]}}
   :plugins [[cider/cider-nrepl "0.9.1"]
