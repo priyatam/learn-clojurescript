@@ -22,10 +22,11 @@
   [channel topic]
   (unsub-all channel topic))
 
-(defn notify [channel]
-  (go-loop []
-    (println channel ": " (<! channel))
-    (recur)))
+(comment 
+  (defn notify [channel]
+    (go-loop []
+      (println channel ": " (<! channel))
+      (recur))))
 
 (defn publish [topic data]
   (go (>! publisher (assoc {:topic topic} data))))
