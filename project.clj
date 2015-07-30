@@ -7,7 +7,7 @@
   :jvm-opts ["-Xms1g" "-server"]
   :global-vars {*warn-on-reflection* false *assert* false}
   :dependencies [[org.clojure/clojure "1.7.0"]
-                 [org.clojure/clojurescript "0.0-3367"]
+                 [org.clojure/clojurescript "0.0-3308"]
                  [org.clojure/core.async "0.1.346.0-17112a-alpha"]
                  [com.cognitect/transit-cljs "0.8.220"]
                  [com.cognitect/transit-clj "0.8.275"]
