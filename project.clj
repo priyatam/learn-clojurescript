@@ -1,7 +1,7 @@
 (defproject thinking-clojurescript "0.3.0"
-  :description "Thinking Clojurescript, a learning series"
+  :description "Learn Isomorphic Clojurescript, a learning series on the REPL"
   :url "https://github.com/priyatam/thinking-clojurescript"
-  :scm {:name "git" :url "https://github.com/priyatam/thinking-clojurescript"}
+  :scm {:name "git" :url "https://github.com/priyatam/learn-clojurescript"}
   :min-lein-version "2.5.0"
   :license {:name "Eclipse Public License" :url "http://www.eclipse.org/legal/epl-v10.html"}
   :jvm-opts ["-Xmx512g" "-server"]
@@ -12,6 +12,5 @@
                  [com.cognitect/transit-cljs "0.8.237"]
                  [com.cognitect/transit-clj "0.8.285"]
                  [garden "1.3.0"]]
-  :profiles {:dev {:dependencies [[org.clojure/tools.nrepl "0.2.11"]
-                                  [priyatam/replify "0.2.2"]]}}
+  :profiles {:dev {:dependencies [[priyatam/replify "0.2.2"]]}}
   :plugins [[lein-marginalia "0.8.0"]])
