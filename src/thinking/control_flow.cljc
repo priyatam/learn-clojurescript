@@ -1,4 +1,4 @@
-(ns thinking.loops)
+(ns thinking.control-flow)
 
 ;;;;;;;;
 ;; Simple Loops
