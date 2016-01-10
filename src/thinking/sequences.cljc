@@ -1,4 +1,4 @@
-(ns thinking.seqs
+(ns thinking.sequences
   (:require [clojure.zip :as z]))
 
 (def data
