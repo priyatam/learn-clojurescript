@@ -1,6 +1,6 @@
 (ns thinking.functions)
 
-(defn foofn [str]
+(defn foo [str]
   (println "hello " str))
 
 (defn total
@@ -18,6 +18,23 @@
 
 (apply max [1 2 3])
 
+;;; Closures
+
+(def foo
+  (let [counter (atom 0)]
+    (fn []
+      (do (swap! counter inc) @counter))))
+
+(def ^:dynamic *evalme* 10)
+
+;; Dynamic Binding
+
+(binding [*evalme* 20]
+  (str "hello" *evalme*))
+
+(str "hello" *evalme*)
+
+
 ;;;;;;;;;
 ;; partial
 
@@ -28,8 +45,6 @@
   (apply * price qty))
 
 (total-price 10 2 3)
-
-(ns thinking.higher-order-functions)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;; higher order functions
