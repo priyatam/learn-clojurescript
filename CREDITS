@@ -1,0 +1,8 @@
+Some sample code has been taken from the following sources. This tutorial would
+not be possible without the following contributors:
+
+- https://clojuredocs.org
+- https://github.com/clojure/core.async/blob/master/examples/walkthrough.clj
+- http://davedellacosta.com/cljs-protocols
+
+Thanks!
