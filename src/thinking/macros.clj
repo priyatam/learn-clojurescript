@@ -1,5 +1,9 @@
 (ns thinking.macros)
 
+(def foo "(println [1 2 3])")
+
+(eval (read-string foo))
+
 (defmacro delay
   [& body]
   (list 'new 'clojure.lang.Delay (list* `^{:once true} fn* [] body)))
