@@ -1,9 +1,11 @@
-Thinking Clojurescript
-======================
+Learn Clojurescript
+===================
 
-A REPL-based learning series for isomorphic Clojurescript programming and design on the Browser, Node, and Jvm.
+A REPL-based, practical learning series for isomorphic Clojurescript
+programming, with an emphasis on writing HTML, CSS, and Javascript in a single,
+powerful language.
 
-Includes features from the upcoming 1.8 release.
+Works on Browser, Node, or Nashorn.
 
 ## Getting Started
 
@@ -15,7 +17,7 @@ Start a REPL
 
 	rlwrap lein trampline repl
 
-OR, open your favorite IDE (Vim, Emacs, IntelliJ, Sublime) and start an nRepl.
+OR, open your favorite IDE (Emacs/Cider, IntelliJ/Cursive) and start an nRepl.
 
 ## Workshops
 
@@ -26,10 +28,6 @@ This is the material for my Clojurescript workshops.
 ## Status
 
 Work in Progress.
-
-## Credits
-
-- [ClojureDocs](http://clojuredocs.org)
 
 ## License
 
