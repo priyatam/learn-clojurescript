@@ -3,7 +3,7 @@
      (:require-macros [cljs.core.async.macros :refer [go go-loop]]))
   (:require
    #?(:clj  [clojure.core.async :as async :refer [<! <!! >! >!! timeout chan]]
-      :cljs [cljs.core.async    :as async :refer [<! <!! >! >!! timeout chan]])))
+      :cljs [cljs.core.async    :as async :refer [<! >! timeout chan]])))
 
 ;; map, filter
 
