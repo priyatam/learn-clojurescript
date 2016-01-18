@@ -1,24 +1,5 @@
 (ns thinking.functions)
 
-;;; Closures
-
-(def foo
-  (let [counter (atom 0)]
-    (fn []
-      (do (swap! counter inc) @counter))))
-
-
-;;;;;;;;;
-;; partial
-
-(def hundred-times
-  (partial * 100))
-
-(defn total-price [price & qty]
-  (apply * price qty))
-
-(total-price 10 2 3)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;; higher order functions
 
