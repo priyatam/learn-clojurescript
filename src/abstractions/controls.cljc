@@ -1,8 +1,8 @@
 (ns thinking.control-flow
   (:require [clojure.string :as str]))
 
-;;;;;;;;
-;; Simple Loops
+
+;; Loops
 
 (defn countdown [n]
   (if-not (zero? n)
@@ -11,9 +11,9 @@
         (println  "countdown: " n))
       (recur (dec n)))))
 
-;; (countdown 100)
+(comment
+ (countdown 100))
 
-;;;;;;;;;;;;;;;;;;;;;
 ;; List Comprehensions
 
 (defn prime? [n]
@@ -53,7 +53,8 @@
                (rest maybe-here)
                (concat not-here (list (first maybe-here))))))))
 
-;; (find-needle "*" "hay|stack")
+(comment
+ (find-needle "*" "hay|stack"))
 
 (defn mustache-template [tpl env]
   (loop [tpl tpl

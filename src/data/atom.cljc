@@ -1,4 +1,4 @@
-(ns thinking.state)
+(ns data.state)
 
 (defn FSM []
   {:states {}

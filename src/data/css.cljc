@@ -1,4 +1,4 @@
-(ns thinking.css
+(ns data.css
   (:require
    [garden.core :refer [css]]))
 

@@ -1,4 +1,4 @@
-(ns thinking.records)
+(ns data.records)
 
 ;; Cljc doesn't support traditional OOP programming; however at its
 ;; heart, OO foundations exist: Interfaces, Polymorphism, and light-weight 'records'

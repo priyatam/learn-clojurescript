@@ -32,8 +32,7 @@
 (str "hello" *evalme*)
 
 
-;;;;;;;;;
-;; partial
+;; Partials
 
 (def hundred-times
   (partial * 100))

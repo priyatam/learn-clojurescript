@@ -1,6 +1,5 @@
-(ns thinking.functions)
+(ns functions.higher-order)
 
-;;;;;;;;;;;;;;;;;;;;;;;;
 ;; higher order functions
 
 (defn present [gift]
@@ -12,8 +11,7 @@
 (comment "repl"
          (red-box))
 
-;;;;;;;;;
-;; map
+;; Map
 
 (map inc [1 2 3 4 5])
 
@@ -57,8 +55,7 @@
 (map #(apply max %)
      [[1 2 3][4 5 6][7 8 9]])
 
-;;;;;;;;;
-;; filter
+;; Filter
 
 (filter even? (range 10))
 
@@ -85,15 +82,14 @@
           {2 "two" 3 "three"} [1 2 3 4 5])))
 
 
-;;;;;;;;;;
-;; reduce
+;; Reduce
 
 (reduce + [1 2 3 4 5])
 
 ;; converting a vector to a set
 (reduce conj #{} [:a :b :c])
 
-;; word frequency
+;; Word frequency example
 (def text
   "Clojure is a concise, powerful, and performant general-purpose programming
   language that runs on the JVM, CLR, Node.js, and modern mobile and desktop web
@@ -106,8 +102,7 @@
           (re-seq #"\w+" s)))
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Ring Middlewares as HoF
+;; Build your own ring Middleware pattern
 
 ;; request
 (def request
@@ -139,7 +134,6 @@
   (app request))
 
 
-;;;;;;;;;;;;;;;;;;
 ;; mapcat
 
 (mapcat reverse [[3 2 1 0] [6 5 4] [9 8 7]])

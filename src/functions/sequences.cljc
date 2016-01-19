@@ -1,4 +1,4 @@
-(ns thinking.sequences
+(ns functions.sequences
   (:require [clojure.zip :as z]))
 
 (def data
@@ -12,17 +12,14 @@
              ["a" "b" "c" "d" "e"]
              ["hello" "thanks" "hola" "namaste" "hi"]])
 
-;;;;;;;;;;;
 ;; reverse
 
 (reverse [1 2 3])
 
-;;;;;;;;;;;
 ;; remove (opp of filter)
 
 (remove #(if (odd? %) %) (range 10))
 
-;;;;;;;;;;;
 ;; comp
 
 (defn reverse-and-take-rest [numbers]
@@ -30,7 +27,6 @@
 
 (reverse-and-take-rest [1 2 3 4 5])
 
-;; how about writing a generic function?
 ;; ((comp rest reverse) [1 2 3 4])
 
 (defn square [x]
@@ -72,7 +68,6 @@
 (red-comp [1 2 3 4 5])
 
 
-;;;;;;;;;;;;;;;;;;;;
 ;; Playing with Maps
 
 (defn map-over-map
@@ -119,8 +114,6 @@
   "Inverts a map: key becomes value, value becomes key"
   [m]
   (zipmap (vals m) (keys m)))
-
-
 
 ;;; Zips
 
