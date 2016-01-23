@@ -1,4 +1,5 @@
-(ns functions.higher-order)
+(ns functions.higher-order
+  (:require [clojure.zip :as z]))
 
 ;; higher order functions
 
@@ -138,3 +139,111 @@
 
 (mapcat reverse [[3 2 1 0] [6 5 4] [9 8 7]])
 
+;; Let's play with Maps
+
+(defn map-over-map
+  "Given a function like (fn [k v] ...) returns a new map with each entry mapped
+   by it."
+  [f m]
+  (when m
+    (persistent! (reduce-kv (fn [out-m k v]
+                              (apply assoc! out-m (f k v)))
+                            (transient (empty m))
+                            m))))
+
+(defn map-values
+  "Apply a function on all values of a map and return the corresponding map (all
+   keys untouched)"
+  [f m]
+  (when m
+    (persistent! (reduce-kv (fn [out-m k v]
+                              (assoc! out-m k (f v)))
+                            (transient (empty m))
+                            m))))
+
+(defn map-keys
+  "Apply a function on all keys of a map and return the corresponding map (all
+   values untouched)"
+  [f m]
+  (when m
+    (persistent! (reduce-kv (fn [out-m k v]
+                              (assoc! out-m (f k) v))
+                            (transient (empty m))
+                            m))))
+
+(defn map-values
+  "Apply a function on all values of a map and return the corresponding map (all
+   keys untouched)"
+  [f m]
+  (when m
+    (persistent! (reduce-kv (fn [out-m k v]
+                              (assoc! out-m k (f v)))
+                            (transient (empty m))
+                            m))))
+
+(defn invert-map
+  "Inverts a map: key becomes value, value becomes key"
+  [m]
+  (zipmap (vals m) (keys m)))
+
+
+;; Useful higher order functions from std library
+
+;; reverse
+
+(reverse [1 2 3])
+
+;; remove (opp of filter)
+
+(remove #(if (odd? %) %) (range 10))
+
+
+
+;;; Zips
+
+;; example from clojure source: zip.clj
+
+(def zip1 [1 '(a b c) 2])
+
+(def root-loc (z/seq-zip (seq zip1)))
+
+(def data '[[a * b] + [c * d]])
+(def dz (z/vector-zip data))
+
+(z/lefts (z/right (z/down (z/right (z/right (z/down dz))))))
+(z/rights (z/right (z/down (z/right (z/right (z/down dz))))))
+(z/up (z/up (z/right (z/down (z/right (z/right (z/down dz)))))))
+(z/path (z/right (z/down (z/right (z/right (z/down dz))))))
+
+(-> dz z/down z/right z/right z/down z/right (z/replace '/) z/root)
+(-> dz z/next z/next (z/edit str) z/next z/next z/next (z/replace '/) z/root)
+(-> dz z/next z/next z/next z/next z/next z/next z/next z/next z/next z/remove
+    (z/insert-right 'e) z/root)
+(-> dz z/next z/next z/next z/next z/next z/next z/next z/next z/next z/remove z/up
+    (z/append-child 'e) z/root)
+
+(z/end? (-> dz z/next z/next z/next z/next z/next z/next z/next z/next z/next z/remove z/next))
+
+(-> dz z/next z/remove z/next z/remove z/root)
+
+(loop [loc dz]
+  (if (z/end? loc)
+    (z/root loc)
+    (recur (z/next (if (= '* (z/node loc))
+                   (z/replace loc '/)
+                   loc)))))
+
+(loop [loc dz]
+  (if (z/end? loc)
+    (z/root loc)
+    (recur (z/next (if (= '* (z/node loc))
+                   (z/remove loc)
+                   loc)))))
+
+(defn print-tree [original]
+  (loop [loc (z/seq-zip (seq original))]
+    (if (z/end? loc)
+      (z/root loc)
+      (recur (z/next
+                (do (println (z/node loc))
+                    loc))))))
