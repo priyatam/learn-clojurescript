@@ -19,13 +19,13 @@
 
 (+ 9 (* 10 5) (/ 1 2))
 
-;; Vars
+;; Js Vars
 
 (def doors js/window)
 
 (def singularity (js/Date. "2044-01-01"))
 
-;; Objects, Constructors, Properties
+;; Js Objects, Constructors, Properties
 
 (def my-object
   (js-obj "a" 1 "b" true "c" nil))
@@ -46,13 +46,13 @@
 
 (.-length (array 1 2 3))
 
-;; Methods
+;; Js Methods
 
 (.alert js/window "Hello, clojurescript!")
 
 (.parse js/JSON "[1, 2, 3]")
 
-;; Arrays
+;; Js Arrays
 
 (array 1 2 3 4)
 
@@ -76,12 +76,26 @@
   (js->clj o)
   (js->clj o :keywordize-keys true))
 
+;; Exceptions
+
+(try
+  (/ 1 0)
+  (catch MyError e
+    (println "you're truest potential"))
+  (catch js/Error e
+    (println "is infinity" e))
+  (finally
+    (println "when you become nothing")))
+
+(throw (js/Error. "Houston, we have a problem."))
+
 ;; Exporting Cljs functions to Js
 
-(defn ^:export creat-chart []
-  (let [ch (js/Chart.)]
-    (. ch (PolarArea []))))
+(defn ^:export hello []
+  (let [d (js/Date. "2044-01-01")]
+    (.alert js/window d)))
 
 ;; Evaluate Raw Js
 
 (js* "alert('this is raw JS')")
+
