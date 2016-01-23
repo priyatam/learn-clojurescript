@@ -17,6 +17,8 @@
 (defn foo [str]
   (println "hello " str))
 
+(def foo (fn [] true))
+
 ;; Multi Arity
 
 (defn total
@@ -37,6 +39,18 @@
   ([x y] (/ (+ x y) 2))
   ([x y & extra] (/ (reduce + (+ x y) extra)
                     (+ 2 (count extra)))))
+
+;; Named Params & Defaults
+
+(defn foo [& {:keys [bar baz]
+              :or {bar "default1"
+                   car "default2"}}]
+  [bar baz])
+
+(comment
+  (foo)
+  (foo :bar "my bar")
+  (foo :bar "my bar" :car "my car"))
 
 ;; Destructuring
 
