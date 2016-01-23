@@ -1,7 +1,16 @@
 (ns functions.core)
 
 
-;; Basics
+;; Apply
+
+(apply str ["hello" " " "world"])
+
+(max 1 2 3)
+
+(apply max [1 2 3])
+
+
+;; Regular Functions
 
 (defn foo [str]
   (println "hello " str))
@@ -12,32 +21,12 @@
   ([price]
    (* price 10)))
 
-(def ^:dynamic *evalme* 10)
-
-
-;; Apply
-
-(apply str ["hello" " " "world"])
-
-(max 1 2 3)
-
-(apply max [1 2 3])
-
 
 ;; Dynamic Binding
+
+(def ^:dynamic *evalme* 10)
 
 (binding [*evalme* 20]
   (str "hello" *evalme*))
 
 (str "hello" *evalme*)
-
-
-;; Partials
-
-(def hundred-times
-  (partial * 100))
-
-(defn total-price [price & qty]
-  (apply * price qty))
-
-(total-price 10 2 3)
