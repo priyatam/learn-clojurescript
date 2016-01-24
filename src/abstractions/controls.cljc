@@ -2,7 +2,7 @@
   (:require [clojure.string :as str]))
 
 
-;; Loops
+;; Loops -----
 
 (defn countdown [n]
   (if-not (zero? n)
@@ -14,7 +14,25 @@
 (comment
  (countdown 100))
 
-;; List Comprehensions
+;; Iterators -----
+
+;; All datastructures support uniform iterations.
+
+(def colorsv ["red" "orange" "green"])
+
+(doseq [color colorsv]
+  color)
+
+(def data
+  {:one 1
+   :two 2
+   :three 3})
+
+(doseq [[k v] data]
+  (str "key" k)
+  (str "value" v))
+
+;; List Comprehensions -----
 
 (defn prime? [n]
   (not-any? zero? (map #(rem n %) (range 2 n))))
@@ -23,7 +41,7 @@
       y (range 3 17 2) :when (prime? y)]
   [x y])
 
-;; Recursion
+;; Recursion -----
 
 ;; Loop binds initial values once, then binds values from each recursion call
 

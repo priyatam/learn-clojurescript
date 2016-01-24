@@ -4,7 +4,7 @@
 
 (println "hello Clojurescript")
 
-;; Basic Types
+;; Basic Types ;;
 
 (def a-number 42)
 (def anotehr-number 3.1445)
@@ -14,6 +14,16 @@
 (def falsy false)
 (def scary nil)
 (def a-keyword :think)
+
+;; Equality ;;
+
+(def a ["red" "blue" "green"])
+(def b ["red" "blue" "green"])
+
+(= a b)
+
+(= 1 "1") ;; ClojureScript equality is based on value
+(= {} {})
 
 ;; Arithmetic
 
@@ -67,6 +77,13 @@
 (let [o (js-obj "somekey" (array "foo" "bar" "car"))]
   (aget o "somekey" 0)
   (aset o "somekey" 2 "bus"))
+
+;; Iterations
+
+(def colors (array "red" "orange" "green"))
+
+(doseq [color colors]
+  (str "fancy-" color))
 
 ;; Convertions
 
