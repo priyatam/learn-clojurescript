@@ -1,11 +1,11 @@
 Learn Clojurescript
 ===================
 
-A REPL-based, practical learning series for isomorphic Clojurescript
-programming, with an emphasis on writing HTML, CSS, and Javascript in a single,
-powerful language.
+A REPL-driven guide for learning programming in Clojurescript, with an emphasis
+on the foundations and Clojure's core idioms: immutable data, functional
+composition, and abstractions.
 
-Works on Browser, Node, or Nashorn.
+Works on all modern Browsers, iOs, Jvm, and Node.
 
 ## Getting Started
 
@@ -17,7 +17,21 @@ Start a REPL
 
 	rlwrap lein trampline repl
 
-OR, open your favorite IDE (Emacs/Cider, IntelliJ/Cursive) and start an nRepl.
+OR, open your favorite IDE (Emacs/Cider, IntelliJ/Cursive), Atom, and start an nRepl.
+
+## Editors
+
+### Emacs, with Cider
+
+
+### Intellij, with Cursive
+
+
+### Atom, with Parinfo
+
+
+### Lighttable
+
 
 ## Workshops
 
@@ -31,4 +45,6 @@ Work in Progress.
 
 ## License
 
-MIT License.
+Copyright (c) Priyatam Mudivarti, 2015 - 2016. All rights reserved.
+
+Released under the MIT License.
