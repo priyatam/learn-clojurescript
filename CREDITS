@@ -1,8 +1,18 @@
-Some sample code has been taken from the following sources. This tutorial would
-not be possible without the following contributors:
+Some code samples were taken from the following sources. This tutorial would not
+be possible without the following contributors:
+
+## Blogs
 
 - https://clojuredocs.org
-- https://github.com/clojure/core.async/blob/master/examples/walkthrough.clj
+- https://github.com/bhauman/async-explore
+- https://github.com/swannodette/swannodette.github.com
+- https://github.com/swannodette/async-tests
+- https://github.com/swannodette/hello-cljsc
+
 - http://davedellacosta.com/cljs-protocols
 
-Thanks!
+## Libraries
+
+- https://github.com/clojure/core.async/blob/master/examples/walkthrough.clj
+
+Thank you all.
