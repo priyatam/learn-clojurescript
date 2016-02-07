@@ -1,8 +1,8 @@
-(ns thinking.async
+(ns async.core
   (:require-macros
-   [cljs.core.async.macros :refer [go go-loop]]
-   [cljs.core.match.macros :refer [match]])
+   [cljs.core.async.macros :refer [go go-loop]])
   (:require
+   [cljs.core.match :refer-macros [match]]
    [clojure.string :as string]
    [cljs.core.async :refer [<! >! alts! chan close! put! sliding-buffer] :as async]))
 

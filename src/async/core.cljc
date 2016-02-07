@@ -1,4 +1,4 @@
-(ns thinking.async
+(ns async.core
   (:refer-clojure :exclude [map reduce into partition partition-by take merge])
   #?(:clj
      (:require [clojure.core.async :refer [go <! <!! >! >!! chan close! put!] :as async]))
