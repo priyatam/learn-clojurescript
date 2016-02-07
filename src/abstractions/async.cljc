@@ -1,33 +1,11 @@
 (ns thinking.async
   (:refer-clojure :exclude [map reduce into partition partition-by take merge])
   #?(:clj
-     (:require [clojure.core.async :refer [go <! chan close! put!] :as async]))
+     (:require [clojure.core.async :refer [go <! <!! >! >!! chan close! put!] :as async]))
   #?(:cljs
-     (:require [cljs.core.async :refer [<! <!! >! >!! chan close! put!] :as async]))
+     (:require [cljs.core.async :refer [<! >! chan close! sliding-buffer put!] :as async]))
   #?(:cljs
-     (:require-macros [cljs.core.async.macros :refer [go >!! >!]])))
-
-(def publisher (chan))
-
-(def subscribers (atom {}))
-
-(def publication
-  (pub publisher #(:topic %)))
-
-(defn subscribe [channel topic]
-  (sub publication topic (chan)))
-
-(defn unsubscribe
-  [channel topic]
-  (unsub-all channel topic))
-
-(defn notify [channel]
-  (go-loop []
-    (println channel ": " (<! channel))
-    (recur)))
-
-(defn publish [topic data]
-  (go (>! publisher (assoc {:topic topic} data))))
+     (:require-macros [cljs.core.async.macros :refer [go alt!]])))
 
 
 ;;;; CHANNELS
@@ -164,3 +142,22 @@
 
 ;; Use `sliding-buffer` to drop oldest values when the buffer is full:
 (chan (sliding-buffer 10))
+
+;; Poor man's pub/sub
+
+(def publisher (chan))
+
+(def subscribers (atom {}))
+
+(def publication
+  (async/pub publisher #(:topic %)))
+
+(defn subscribe [channel topic]
+  (sub publication topic (chan)))
+
+(defn unsubscribe
+  [channel topic]
+  (unsub-all channel topic))
+
+(defn publish [topic data]
+  (go (>! publis (assoc {:topic topic} data))))
