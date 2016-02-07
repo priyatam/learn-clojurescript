@@ -17,4 +17,5 @@
                  [hipo "0.5.2"]
                  [jayq "2.5.4"]]
   :profiles {:dev {:dependencies [[facjure/replify "0.3.0"]]}}
-  :plugins [[lein-marginalia "0.8.0"]])
+  :plugins [[lein-marginalia "0.8.0"]]
+  :main replify)
