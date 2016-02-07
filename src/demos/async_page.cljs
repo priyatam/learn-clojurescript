@@ -1,7 +1,7 @@
 (ns demos.async-page
   (:require [cljs.core.async :as async
              :refer [<! >! chan close! sliding-buffer put!]]
-            [crate.core :as crate]
+            [hipo.core :as hipo]
             [jayq.core :as jq :refer [$ css inner html on]]
             [clojure.string :as string])
   (:require-macros [cljs.core.async.macros :as m :refer [go alt!]]))
@@ -66,7 +66,7 @@
   (let [elem ($ ".container")]
     (log elem)
     (inner elem
-          (crate/html (view-func state)))))
+          (hipo/create (view-func state)))))
 
 (defn app-loop [start-state]
   (let [edit-click       (click-chan ".app a.edit" :edit)
