@@ -1,4 +1,4 @@
-(ns demos.async-page
+(ns async.todo
   (:require [cljs.core.async :as async
              :refer [<! >! chan close! sliding-buffer put!]]
             [hipo.core :as hipo]
