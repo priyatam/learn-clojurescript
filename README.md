@@ -15,7 +15,7 @@ Install Leiningen
 
 Start a REPL
 
-	rlwrap lein trampline repl
+	rlwrap lein trampoline repl
 
 OR, open your favorite IDE (Emacs/Cider, IntelliJ/Cursive), Atom, and start an nRepl.
 
