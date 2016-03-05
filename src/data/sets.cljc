@@ -23,16 +23,17 @@
     (Shipment. "S3" "P3" 400)})
 
 (set/rename parts {:number :id, :city :location})
+
 (set/select #(= (:name %) "Smith") suppliers)
 
-(set/project suppliers [:city])
+(filter #(= (:city %) "Paris") (set/project suppliers [:city]))
 
 (set/join parts shipments {:number :part})
 
-(set/project
- (set/join
-  (set/select #(= (:city %) "Paris") suppliers)
-  shipments
-  {:number :supplier})
- [:name])
-
+(def res
+  (set/project
+   (set/join
+    (set/select #(= (:city %) "Paris") suppliers)
+    shipments
+    {:number :supplier})
+   [:name]))
