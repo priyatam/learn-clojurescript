@@ -1,4 +1,4 @@
-(ns thinking.control-flow
+(ns abstractions.controls
   (:require [clojure.string :as str]))
 
 
@@ -8,7 +8,7 @@
   (if-not (zero? n)
     (do
       (if (= 0 (rem n 10))
-        (println  "countdown: " n))
+        (str  "countdown: " n))
       (recur (dec n)))))
 
 (comment
@@ -38,8 +38,14 @@
   (not-any? zero? (map #(rem n %) (range 2 n))))
 
 (for [x (range 3 17 2) :when (prime? x)
-      y (range 3 17 2) :when (prime? y)]
+      y (range 3 100 2) :when (prime? y)]
   [x y])
+
+
+(let [state true]
+  (if state
+    "yay"
+    "nay"))
 
 ;; Recursion -----
 
@@ -55,9 +61,11 @@
 (defn prime?
   [num]
   (loop [start-num 2]
-    (if (> start-num (Math/sqrt num)) true
-        (if (= (rem num start-num) 0) false
-            (recur (inc start-num))))))
+    (if (> start-num (Math/sqrt num))
+      true
+      (if (= (rem num start-num) 0)
+        false
+        (recur (inc start-num))))))
 
 (defn find-needle [needle haystack]
   (loop [needle needle
@@ -74,15 +82,23 @@
 (comment
  (find-needle "*" "hay|stack"))
 
+(let [res {:status "200"}]
+  (cond
+    (= (:status res) "200") (str "response successed")
+    (= (:status res) "500") (str "response failed!")
+    (= (:status res) "400")  (str "seriously, check your url")
+    :else "forget it, start your server"))
+
 (defn mustache-template [tpl env]
   (loop [tpl tpl
          env env]
-    (cond (empty? env) tpl
-          :else        (let [[key value] (first env)]
-                         (recur
-                          (try
-                            (str/replace tpl
-                                         (re-pattern (str "\\{\\{" (name key) "\\}\\}"))
-                                         value)
-                            (catch Exception e tpl))
-                          (rest env))))))
+    (cond
+      (empty? env) tpl
+      :else (let [[key value] (first env)]
+              (recur
+               (try
+                 (str/replace tpl
+                              (re-pattern (str "\\{\\{" (name key) "\\}\\}"))
+                              value)
+                 (catch Exception e tpl))
+               (rest env))))))
