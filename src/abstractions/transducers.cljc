@@ -1,4 +1,4 @@
-(ns thinking.transducers
+(ns abstractions.transducers
   #?(:cljs
      (:require-macros [cljs.core.async.macros :refer [go go-loop]]))
   (:require

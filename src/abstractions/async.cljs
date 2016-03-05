@@ -1,4 +1,4 @@
-(ns async.core
+(ns abstractions.async
   (:require 'core)
   (:require-macros
    [cljs.core.async.macros :refer [alt! go go-loop]])

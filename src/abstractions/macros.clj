@@ -1,4 +1,4 @@
-(ns thinking.macros)
+(ns abstractions.macros)
 
 (def foo "(println [1 2 3])")
 

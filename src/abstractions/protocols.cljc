@@ -1,4 +1,4 @@
-(ns thinking.protocols)
+(ns abstractions.protocols)
 
 (defprotocol IFoo
   (foo [this])
