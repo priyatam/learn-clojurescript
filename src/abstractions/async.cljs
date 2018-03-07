@@ -42,4 +42,4 @@
             (recur (inc i) (conj ret (alt! [c t] ([v] v)))))))))
 
 (go
-  (println (<! (google "clojure"))))
+  (<! (google "clojure")))
