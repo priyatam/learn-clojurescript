@@ -19,32 +19,14 @@ Start a REPL
 
 OR, open your favorite IDE (Emacs/Cider, IntelliJ/Cursive), Atom, and start an nRepl.
 
-## Editors
-
-### Emacs, with Cider
-
-
-### Intellij, with Cursive
-
-
-### Atom, with Parinfo
-
-
-### Lighttable
-
-
 ## Workshops
 
 This is the material for my Clojurescript workshops.
 
 - [Functional Programming in Clojurescript](http://forwardjs.com/workshop/functional-programming-with-clojurescript-forward-summit-4)
 
-## Status
-
-Work in Progress.
-
 ## License
 
-Copyright (c) Priyatam Mudivarti, 2015 - 2016. All rights reserved.
+Copyright (c) Priyatam Mudivarti, 2015 - 2018. All rights reserved.
 
 Released under the MIT License.
