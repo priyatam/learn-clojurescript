@@ -26,6 +26,7 @@
    :auth (first b-map)})
 
 (assoc-in data [:body :text] "Hello Planet" )
+(assoc-in data2 [:headers :content-type :ip] "http://123131dfgdfdf")
 
 (def matrix [[1 2 3 4 5]
              ["a" "b" "c" "d" "e"]
@@ -33,10 +34,12 @@
 
 (:type (:content-type (:headers data)))
 
+(-> (:headers data)
+    :content-type
+    :type)
+
 (map #(-> % :headers :content-type :type)
      (list data data2))
 
 (keys data)
 (vals data)
-
-(assoc-in data2 [:headers :content-type :ip] "http://123131dfgdfdf")

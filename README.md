@@ -16,7 +16,7 @@ Start a REPL
 
     clj --main cljs.main --repl
 
-    rlwrap lein trampline repl
+    rlwrap lein trampoline repl
 
 OR, open your favorite editor (Emacs/Cider, IntelliJ/Cursive), VSCode, and start an repl.
 

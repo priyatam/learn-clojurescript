@@ -1,5 +1,10 @@
 (ns abstractions.protocols)
 
+;; Protocols let you describe behavior to existing types or new types.
+;; They also extend other protocols and types. In order to understand what
+;; this means, let's do an exercise.
+
+
 (defprotocol IFoo
   (foo [this])
   (bar [this]))
@@ -162,3 +167,58 @@
 ;; (list-forwards ll)
 ;; (list-backwards sl)
 ;; (list-backwards ll)
+
+
+;; Often, I deal with large datasets, with nested maps and keywords
+(def my-map {:name "John Doe"
+             :email "john@doe.com"
+             :address {:house "42"
+                       :street "Moon St."
+                       :city "San Francisco"
+                       :state "CA"
+                       :zip 76509
+                       :mobile "+188888888"}
+             :ssn "123456"
+             :spouse {:name "Jane Doe"
+                      :ssn "654321"
+                      :relation :wife
+                      :address {:house "40"
+                                :street "Sun St."
+                                :city "Atlanta"
+                                :state "GA"
+                                :zip 76509
+                                :mobile "+188888888"}}})
+
+;; Rather than struggling with iteration and maps on the nested structures, would'nt
+;; it be nice to have something like this?
+(comment
+  (select my-map
+          [:name :email {:address [:city :state]
+                         :spouse [:name {:address [:city :state]}]}]))
+
+;; We can implement this new feature with Protocols.
+;; Let's describe a Protocol name and a function to select data from nested maps.
+(defprotocol Selector
+  (-select [k m]))
+
+;; Ideally, we perform this operation over a collection. The pattern
+;; here is to map this operation over a collection and sum its results
+(defn select [m selectors-coll]
+  (reduce conj {} (map #(-select % m) selectors-coll)))
+
+;; A sample implementation can be based on the collection type
+#?(:clj
+   (extend-protocol Selector
+     clojure.lang.Keyword
+     (-select [k m]
+       (find m k))
+     clojure.lang.APersistentMap
+     (-select [sm m]
+       (into {}
+             (for [[k s] sm]
+               [k (select (get m k) s)])))))
+
+;; Let's try now
+(select my-map
+          [:name :email {:address [:city :state]
+                         :spouse [:name {:address [:city :state]}]}])
