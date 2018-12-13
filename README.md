@@ -2,22 +2,25 @@ Learn Clojurescript
 ===================
 
 A REPL-driven guide for learning programming in Clojurescript, with an emphasis
-on the foundations and Clojure's core idioms: immutable data, functional
-composition, and abstractions.
-
-Works on all modern Browsers, iOs, Jvm, and Node.
+on the foundations and core idioms: data, functions, and abstractions.
 
 ## Getting Started
 
-Install Leiningen
+Install Clojure or Leiningen
+
+	brew install clojure
 
 	brew install leiningen
 
 Start a REPL
 
-	rlwrap lein trampline repl
+    clj --main cljs.main --repl
 
-OR, open your favorite IDE (Emacs/Cider, IntelliJ/Cursive), Atom, and start an nRepl.
+    rlwrap lein trampline repl
+
+OR, open your favorite editor (Emacs/Cider, IntelliJ/Cursive), VSCode, and start an repl.
+
+Open 'src' and explore each namespace and walkthrough its available functions.
 
 ## Workshops
 
